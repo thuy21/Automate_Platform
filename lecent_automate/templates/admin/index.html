@@ -1,0 +1,14 @@
+{% extends 'admin/index.html' %}
+{% load static %}
+{% block logo %}
+<div class="logo-wrap" v-if="!fold">
+    <div class="float-wrap">
+        <div class="left">
+            <font style="font-size: 25px;transform: skewX(-11deg);font-weight: 500;line-height: 92px;">Lecent<span style="font-size: 20px;">{{ site_header }}</span></font>
+        </div>
+        <!-- <div class="log-font" style="top: 12px;">
+            <span>{{ site_header }}</span>
+        </div> -->
+    </div>
+</div>
+{% endblock %}

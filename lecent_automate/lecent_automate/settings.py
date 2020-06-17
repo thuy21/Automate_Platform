@@ -9,41 +9,7 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
-
-import os, time
-
-SIMPLEUI_CONFIG = {
-    'system_keep': False,
-    'menu_display': ['项目管理', '用例管理', '报表管理'],  # 开启排序和过滤功能, 不填此字段为默认排序和全部显示, 空列表[] 为全部不显示.
-    'dynamic': True,  # 设置是否开启动态菜单, 默认为False. 如果开启, 则会在每次用户登陆时动态展示菜单内容
-    'menus': [{
-        'name': '项目管理',
-        'icon': 'fas fa-code',
-        'url': 'https://gitee.com/tompeppa/simpleui'
-    }, {
-        'app': 'auth',
-        'name': '用例管理',
-        'icon': 'fas fa-user-shield',
-        'models': [{
-            'name': '用户',
-            'icon': 'fa fa-user',
-            'url': 'auth/user/'
-        }]
-    }, {
-        'name': '报表管理',
-        'icon': 'fa fa-file',
-        'models': [{
-            'name': 'Baidu',
-            'url': 'http://baidu.com',
-            'icon': 'far fa-surprise'
-        }, {
-            'name': '内网穿透',
-            'url': 'https://www.wezoz.com',
-            'icon': 'fab fa-github'
-        }]
-    }]
-}
-
+import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -86,7 +52,7 @@ ROOT_URLCONF = 'lecent_automate.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -147,3 +113,42 @@ system_keep = False
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+import os, time
+
+SIMPLEUI_CONFIG = {
+    'system_keep': False,
+    'menu_display': ['权限设置', '项目测试', '项目配置'],  # 开启排序和过滤功能, 不填此字段为默认排序和全部显示, 空列表[] 为全部不显示.
+    'dynamic': True,  # 设置是否开启动态菜单, 默认为False. 如果开启, 则会在每次用户登陆时动态展示菜单内容
+    'menus': [{
+        'app': 'auth',
+        'name': '权限设置',
+        'icon': 'fas fa-user-shield',
+        'models': [{
+            'name': '用户权限',
+            'icon': 'fa fa-user',
+            'url': 'auth/user/'
+        }]
+    }, {
+        'name': '项目测试',
+        'icon': 'fa fa-file',
+        'models': [{
+            'name': 'Baidu',
+            'url': 'http://baidu.com',
+            'icon': 'far fa-surprise'
+        }, {
+            'name': '测试用例',
+            'url': 'automated/test/',
+            'icon': 'fab fa-github'
+        }]
+    },{
+        'name': '项目配置',
+        'icone': 'fa fa-file',
+        'models': [{
+            'name': 'Config',
+            'icon': 'fa fa-user',
+            'url': 'auth/user/'
+        }]
+    }]
+}
